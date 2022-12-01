@@ -1,0 +1,17 @@
+.dialogue__container {
+    background-color: #788AA3;
+    border: solid;
+    padding: 15px;
+}
+
+.dialogue-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.dialogue-footer {
+    cursor: pointer;
+    font-size: .9rem;
+    text-align: end;
+}

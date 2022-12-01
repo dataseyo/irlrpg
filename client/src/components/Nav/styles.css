@@ -1,0 +1,6 @@
+.nav__container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: 28282B;
+}
