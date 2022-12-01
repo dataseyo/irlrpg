@@ -1,4 +1,10 @@
 import React, { useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+
+import {
+  useAppSelector,
+  useAppDispatch  
+} from '../../../state/hooks'
 
 type Skill = {
   id: number,
@@ -10,29 +16,22 @@ type Skill = {
 /* SKILL DETAIL COMPONENT
     
     - opened when user clicks on a SkillCard component within the Skills list
+    - get data from redux store, and filter data by skill id with useParams
 */
-const SkillDetail = ({
-  id,
-  level,
-  name,
-  asset
-}: Skill) => {
-  // dummy tasks state, replace with redux store
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "do something",
-      xp: 10
-    },
+const SkillDetail = () => {
+  const params = useParams()
+  console.log(params)
 
-    {
-      id: 2,
-      text: "get big",
-      xp: 100
-    }
-  ])
+  const skills = useAppSelector((state) => state.skill)
+  const skill = skills.filter(s => s.name == params.name)
+  console.log(skill)
+
   return (
-    <div>SkillDetail</div>
+    <div>
+      <h1>Skill Detail</h1>
+      <Link to="/skills">Back</Link>
+      <p>{JSON.stringify(skill)}</p>
+    </div>
   )
 }
 

@@ -4,24 +4,26 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import './styles.css'
 import {
     Skills,
-    SkillCard
+    SkillCard,
+    SkillDetail
 } from '../../components'
+import {
+  useAppSelector,
+  useAppDispatch  
+} from '../../state/hooks'
 
 const SkillsPage = () => {
   return (
     <>
       <h2>Skills</h2>
       <Routes>
-        <Route index element={<Skills/>}/>
+        <Route index element={
+          <Skills/>
+        }/>
         <Route 
           path=":name"
           element={
-            <SkillCard 
-              id={1}
-              level={1}
-              asset="1"
-              name="test"
-            />
+            <SkillDetail/>
           }
         />
       </Routes>

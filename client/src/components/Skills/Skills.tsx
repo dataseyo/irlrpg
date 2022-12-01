@@ -4,6 +4,10 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import './styles.css'
 import SkillCard from './SkillCard'
 import Dialogue from '../Dialogue/Dialogue'
+import {
+    useAppSelector,
+    useAppDispatch  
+  } from '../../state/hooks'
 
 /* SKILL LIST COMPONENT
 
@@ -12,6 +16,9 @@ import Dialogue from '../Dialogue/Dialogue'
     - allow user to click on skills to open skill detail page
 */
 const Skills = () => {
+    // redux state
+    const skillsArray = useAppSelector((state) => state.skill)
+
     // dummy state for skills, replace with redux store
     const [skills, setSkills] = useState([
         {
@@ -81,7 +88,7 @@ const Skills = () => {
                 {/* if user hasn't added any skills, prompt them to */}
                 {
                     skills ? 
-                    skills.map(skill => {
+                    skillsArray.map(skill => {
                         return (
                             <Link to={skill.name}>
                                 <SkillCard
